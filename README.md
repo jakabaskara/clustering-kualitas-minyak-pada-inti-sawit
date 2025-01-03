@@ -16,6 +16,22 @@
 
 ## Data Understanding
 
+Dataset yang digunakan berisi informasi mengenai berbagai kadar dalam perkebunan kelaa sawit. Dataset ini dapat diperoleh menggunakan alat [foss nirs](https://news.kharisma-sawit.com/berita-terkini-beginilah-cara-kerja-foss-nir-pabrik-sawit-efektif-untuk-pks-284#:~:text=Bisa%20dikatakan%20bahwa%20FOSS%20NIRS,cepat%20hanya%20dalam%20satu%20menit.).
+
+| Column                   | Non-Null Count | Dtype   |
+| ------------------------ | -------------- | ------- |
+| COMPANY                  | 3205 non-null  | object  |
+| PKS_CODE                 | 3205 non-null  | object  |
+| INSTRUMENT_SERIAL_NUMBER | 674 non-null   | float64 |
+| OIL_WM                   | 3205 non-null  | float64 |
+| VM                       | 3205 non-null  | float64 |
+| OIL_DM                   | 3205 non-null  | float64 |
+| NOS                      | 3205 non-null  | float64 |
+| FFA                      | 3205 non-null  | float64 |
+| DOBI                     | 3205 non-null  | int64   |
+| RILL_MUTU_KADAR_AIR      | 3205 non-null  | float64 |
+| INC_MUTU_KADAR_AIR       | 3205 non-null  | object  |
+
 **Principal Component Analysis(PCA)**
 
 ## Data Preparation
