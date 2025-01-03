@@ -4,243 +4,31 @@
 
 **Latar Belakang Proyek**
 
-Seiring dengan perkembangan teknologi, pasar ponsel pintar semakin berkembang pesat dengan banyaknya pilihan model yang tersedia. Pengguna seringkali mengalami kesulitan dalam memilih ponsel yang tepat karena banyaknya pilihan yang ada. Selain itu, spesifikasi teknis yang kompleks dan beragam membuat proses pemilihan ponsel menjadi semakin sulit bagi konsumen awam. Hal ini menimbulkan masalah bagi pengguna yang ingin mendapatkan ponsel yang sesuai dengan kebutuhan mereka tanpa harus melalui proses penelitian yang memakan waktu.
-
-Sistem rekomendasi adalah alat untuk berinteraksi dengan ruang informasi yang besar dan kompleks[1]. Oleh karena itu, penting untuk memiliki sistem rekomendasi yang dapat menyederhanakan proses ini dengan memberikan rekomendasi yang relevan berdasarkan kebutuhan dan preferensi pengguna. Dengan memanfaatkan data rating pengguna sebelumnya dan spesifikasi teknis ponsel, sistem rekomendasi ini diharapkan dapat membantu pengguna menemukan ponsel yang paling sesuai dengan kebutuhan mereka, baik dari segi performa, harga, maupun fitur lainnya.
-
 **Pentingnya Proyek**
-
-Proyek ini penting karena:
-
-- Peningkatan Pengalaman Pengguna: Membantu pengguna menemukan ponsel yang sesuai dengan preferensi mereka, meningkatkan kepuasan dan pengalaman pengguna.
-- Efisiensi: Mengurangi waktu dan usaha yang dibutuhkan pengguna dalam mencari dan membandingkan berbagai model ponsel.
-- Personalisasi: Memberikan rekomendasi yang dipersonalisasi berdasarkan data rating pengguna.
 
 ## Business Understanding
 
 ### Problem Statements
 
-- Bagaimana kita bisa membantu pengguna menemukan ponsel yang paling sesuai dengan kebutuhan dan preferensi mereka?
-- Bagaimana kita bisa membantu pengguna menemukan ponsel yang mirip dengan ponsel lamanya meskipun pengguna tidak mengerti spesifikasi teknis ponsel lamanya?
-
 ### Goals
-
-Menjelaskan tujuan proyek yang menjawab pernyataan masalah:
-
-- Mengembangkan sistem rekomendasi yang dapat memberikan daftar ponsel terbaik berdasarkan preferensi pengguna (Rating terhadap ponsel lama nya).
-- Membangun sistem rekomendasi yang dapat memberikan daftar ponsel terbaik berdasarkan model ponsel lamanya (Contoh: iPhone XR).
 
 ### Solution statements
 
-- Content-Based Filtering: Menggunakan fitur deskriptif dari ponsel (brand, model, dan operating system) untuk memberikan rekomendasi.
-- Collaborative Filtering: Menggunakan data rating dari pengguna untuk memberikan rekomendasi berdasarkan kesamaan preferensi dengan pengguna lain.
-
 ## Data Understanding
 
-Dataset yang digunakan berisi informasi mengenai berbagai model ponsel, termasuk brand, model, operating system, dan beberapa fitur lainnya. Dataset ini dapat diunduh dari [kaggle](https://www.kaggle.com/datasets/meirnizri/cellphones-recommendations/data).
-
-Dataset terbagi menjadi 3 yaitu cellphones data, cellphones rating, dan cellphones users.
-
-Cellphones data memiliki jumlah baris 33 dan kolom 32 tanpa missing value. Dataset ini berisikan tentang spesifikasi detail dari sebuah handphone, berikut adalah cellphones data info dan sampel data:
-| Column | Dtype |
-|--------------------|----------|
-| cellphone_id | int64 |
-| brand | object |
-| model | object |
-| operating system | object |
-| internal memory | int64 |
-| RAM | int64 |
-| performance | float64 |
-| main camera | int64 |
-| selfie camera | int64 |
-| battery size | int64 |
-| screen size | float64 |
-| weight | int64 |
-| price | int64 |
-| release date | object |
-
-| index | cellphone_id | brand | model              | operating system | internal memory | RAM | performance | main camera | selfie camera | battery size | screen size | weight | price | release date |
-| ----- | ------------ | ----- | ------------------ | ---------------- | --------------- | --- | ----------- | ----------- | ------------- | ------------ | ----------- | ------ | ----- | ------------ |
-| 0     | 0            | Apple | iPhone SE \(2022\) | iOS              | 128             | 4   | 7\.23       | 12          | 7             | 2018         | 4\.7        | 144    | 429   | 18/03/2022   |
-| 1     | 1            | Apple | iPhone 13 Mini     | iOS              | 128             | 4   | 7\.72       | 12          | 12            | 2438         | 5\.4        | 141    | 699   | 24/09/2021   |
-
-Cellphones rating memiliki 990 baris dan 3 kolom tanpa missing value. Dataset ini berisikan nilai rating yang diberikan user X terhadap cellphone Y, berikut adalah cellphones rating info dan sampel data:
-
-| Column       | Dtype |
-| ------------ | ----- |
-| user_id      | int64 |
-| cellphone_id | int64 |
-| rating       | int64 |
-
-| index | user_id | cellphone_id | rating |
-| ----- | ------- | ------------ | ------ |
-| 0     | 0       | 30           | 1      |
-| 1     | 0       | 5            | 3      |
-
-Cellphones users memiliki 99 baris dan 4 kolom tanpa missing value. Dataset ini berisikan data-data dari seorang user, berikut adalah cellphones users info dan sampel data:
-
-| Column     | Dtype  |
-| ---------- | ------ |
-| user_id    | int64  |
-| age        | int64  |
-| gender     | object |
-| occupation | object |
-
-| index | user_id | age | gender | occupation        |
-| ----- | ------- | --- | ------ | ----------------- |
-| 0     | 0       | 38  | Female | Data analyst      |
-| 1     | 1       | 40  | Female | team worker in it |
-
-Variabel-variabel pada dataset adalah sebagai berikut:
-
-- data:
-
-  - `cellphone_id`: ID unik untuk setiap ponsel.
-  - `brand`: Merek ponsel.
-  - `model`: Model ponsel.
-  - `operating system`: Sistem operasi ponsel.
-  - `internal memory`: Memori internal ponsel dalam GB.
-  - `RAM`: RAM ponsel dalam GB.
-  - `performance`: Skor kinerja ponsel.
-  - `main camera`: Resolusi kamera utama dalam MP.
-  - `selfie camera`: Resolusi kamera depan dalam MP.
-  - `battery size`: Kapasitas baterai dalam mAh.
-  - `screen size`: Ukuran layar dalam inci.
-  - `weight`: Berat ponsel dalam gram.
-  - `price`: Harga ponsel dalam USD.
-  - `release date`: Tanggal rilis ponsel.
-
-- rating:
-
-  - `user_id`: ID unik untuk setiap pengguna.
-  - `cellphone_id`: ID unik untuk setiap ponsel (mengacu pada cellphones_data).
-  - `rating`: Rating yang diberikan pengguna untuk ponsel tertentu (skala 1-10).
-
-- users:
-  - `user_id`: ID unik untuk setiap pengguna.
-  - `age`: Usia pengguna.
-  - `gender`: Jenis kelamin pengguna.
-  - `occupation`: Pekerjaan pengguna.
-
-**Exploratory Data Analysis (EDA)**
-
-- Distribusi Brand Ponsel
-  ![Distribusi Brand Ponsel](https://raw.githubusercontent.com/AbiyaMakruf/Dicoding-ModelSistemRekomendasi/main/image/image1.png)
-
-  - Gambar ini menunjukkan jumlah ponsel dari berbagai brand dalam dataset.
-  - Samsung memiliki jumlah ponsel terbanyak dengan 8 unit.
-  - Apple berada di posisi kedua dengan 6 unit.
-  - Brand Asus, Oppo, Vivo, dan Sony memiliki jumlah yang lebih sedikit.
-
-- Distribusi Sistem Operasi Ponsel
-  ![Distribusi Sistem Operasi Ponsel](https://raw.githubusercontent.com/AbiyaMakruf/Dicoding-ModelSistemRekomendasi/main/image/image2.png)
-
-  - Gambar ini menunjukkan distribusi sistem operasi pada ponsel dalam dataset.
-  - Android merupakan sistem operasi yang paling umum dengan lebih dari 25 unit.
-  - iOS memiliki sekitar 6 unit.
-
-- Distribusi Tahun Rilis Ponsel
-  ![Distribusi Tahun Rilis Ponsel](https://raw.githubusercontent.com/AbiyaMakruf/Dicoding-ModelSistemRekomendasi/main/image/image3.png)
-
-  - Gambar ini menunjukkan distribusi ponsel berdasarkan tahun rilis.
-  - Tahun 2021 dan 2022 memiliki jumlah ponsel yang hampir sama, masing-masing lebih dari 15 unit.
-  - Tahun 2018 memiliki jumlah ponsel yang sangat sedikit.
-  - Ponsel yang dirilis pada tahun 2018 memiliki representasi yang sangat rendah, menunjukkan bahwa dataset lebih fokus pada model-model terbaru.
-
-- Distribusi Rating Ponsel
-  ![Distribusi Tahun Rilis Ponsel](https://raw.githubusercontent.com/AbiyaMakruf/Dicoding-ModelSistemRekomendasi/main/image/image4.png)
-  - Gambar ini menunjukkan distribusi rating yang diberikan pengguna untuk ponsel dalam dataset.
-  - Rating 8 adalah yang paling umum, diikuti oleh rating 7 dan 10.
-  - Rating yang lebih rendah, seperti 2, 3, dan 4, memiliki jumlah yang lebih sedikit.
-  - Sebagian besar ponsel dalam dataset mendapatkan rating yang cukup tinggi (7-10).
+**Principal Component Analysis(PCA)**
 
 ## Data Preparation
 
 **Teknik Data Preparation**
 
-- Menggabungkan dataset menjadi satu.
-- Handling Missing Values: Menghapus atau mengisi nilai yang hilang dalam dataset.
-- Removing Outliers: Menghapus data yang memiliki nilai outliers pada kolom tertentu.
-- Mengubah format penulisan.
-- Mereplace value.
-- Pembagian dataset untuk train-test (80:20).
-
 **Proses Data Preparation**
-
-- Menggabungkan dataset cellphones data, cellphones rating, dan cellphones user menjadi satu dataframe.
-- Menghapus nilai Null pada kolom `occupation`.
-- Menghapus outlier pada kolom `rating` yang memiliki value 18.
-- Menghapus outlier pada kolom `gender` yang memiliki value -Select Gender-.
-- Value pada kolom `occupation` diubah menjadi lowercase.
-- Terdapat beberapa penulisan yang salah pada kolom `occupation`. Value 'Healthare' menjadi 'healthcare' dan value 'it' menjadi 'information technology'.
-- Pembagian dataset train-test dengan skema 80:20.
-
-|               | Jumlah |
-| ------------- | ------ |
-| Whole Dataset | 989    |
-| Train         | 791    |
-| Test          | 198    |
 
 **Alasan Tahapan Data Preparation**
 
-- Handling Missing Values: Untuk memastikan tidak ada data yang hilang yang dapat mempengaruhi hasil analisis dan model.
-- Removing outliers : Untuk meningkatkan akurasi model dengan menghilangkan data yang dapat mempengaruhi performa model.
-- Mengubah format penulisan : Memasatikan bahwa memiliki value format penulisan yang sama sehingga tidak dianggap sebagai data yang berbeda padahal value yang sama.
-- Mereplace value : Mengubah beberapa nilai karena memiliki kesalahan penulisan.
-
 ## Modeling
 
-Pada tahap ini akan membahas dua pendekatan utama yang digunakan dalam membangun sistem rekomendasi: Content-Based Filtering dan Collaborative Filtering. Berikut adalah penjelasan lebih lanjut mengenai parameter yang digunakan, kelebihan, dan kekurangan dari masing-masing pendekatan, serta beberapa potongan kode yang relevan.
-
 **Model Sistem Rekomendasi Content Based Filtering**
-
-Content-Based Filtering menggunakan deskripsi dan fitur dari item itu sendiri untuk memberikan rekomendasi. Berikut adalah parameter untuk pendekatan ini.
-
-Parameter yang Digunakan:
-
-- TF-IDF Vectorizer: Untuk mengubah deskripsi teks menjadi vektor numerik.
-- Cosine Similarity: Untuk menghitung kesamaan antara vektor item.
-
-Tahapan proses:
-
-- Karena TF-IDF hanya cocok untuk data teks maka hanya kolom yang bertipe object saja yang dipilih.
-
-  ```python
-  #Dataframe yang digunakan
-  phone_new = pd.DataFrame({
-      'cellphone_id': cellphone_id,
-      'brand': brand,
-      'model': model,
-      'operating_system': operating_system,
-  })
-  ```
-
-- Membangun sistem rekomendasi menggunakan TfidfVectorizer() dengan melakukan perhitungan idf pada data `brand`
-
-- Melakukan fit lalu ditransformasikan ke bentuk matrix
-
-  ```python
-  #Melakukan fit lalu ditransformasikan ke bentuk matrix
-  tfidf_matrix = tf.fit_transform(data['brand'])
-  ```
-
-  Terdapat keluaran (33,10) dimana nilai 33 adalah ukuran data dan 10 jumlah brand.
-
-- Menghitung derajat kesamaan (similarity degree) antar model dengan teknik cosine similarity.
-
-- Membangun fungsi yang menerima nama model dan menampilkan 4 rekomendasi teratas. Output berupa rekomendasi model dengan tambahan detail seperti brand dan operating system.
-
-Bagaimana Algoritma Bekerja:
-
-- Content-Based Filtering menggunakan model dari item itu sendiri untuk memberikan rekomendasi. Algoritma ini bekerja dengan cara mengubah fitur deskriptif item (model) menjadi representasi numerik menggunakan TF-IDF Vectorizer. Kemudian, cosine similarity dihitung untuk menentukan seberapa mirip item-item tersebut berdasarkan vektor fitur mereka. Berdasarkan kemiripan ini, sistem dapat merekomendasikan item yang paling mirip dengan item yang sudah disukai pengguna.
-
-Interaksi dengan Sampel Input:
-Misalkan pengguna memiliki ponsel "iPhone XR" dan ingin mendapatkan rekomendasi ponsel yang mirip. Algoritma akan:
-
-1. Mengambil deskripsi lengkap dari "iPhone XR".
-2. Mengubah deskripsi ini menjadi vektor numerik menggunakan TF-IDF Vectorizer.
-3. Menghitung cosine similarity antara vektor "iPhone XR" dan semua vektor ponsel lain dalam dataset.
-4. Mengembalikan daftar ponsel dengan similarity tertinggi ke "iPhone XR".
 
 **Top-N Recommendation Content Based Filtering**
 
@@ -402,6 +190,3 @@ RMSE yang dihitung memberikan indikasi bahwa model prediksi rating memiliki ting
 Dengan menggunakan kedua pendekatan ini, kita dapat membangun sistem rekomendasi yang lebih robust dan fleksibel. Content-Based Filtering cocok untuk memberikan rekomendasi berdasarkan fitur-fitur item itu sendiri, sementara Collaborative Filtering efektif dalam menemukan pola-pola preferensi pengguna dari data interaksi yang ada. Memahami kelebihan dan kekurangan masing-masing pendekatan membantu kita memilih metode yang paling sesuai dengan kebutuhan dan konteks spesifik dari sistem rekomendasi yang sedang dibangun.
 
 ## Referensi
-
-[1] [R. Burke, A. Felfernig, and M. H. Göker, “Recommender Systems: An Overview”, AIMag, vol. 32, no. 3, pp. 13-18, Jun. 2011.](https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/2361)
-
