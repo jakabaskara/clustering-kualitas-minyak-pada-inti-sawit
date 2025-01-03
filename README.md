@@ -4,19 +4,40 @@
 
 **Latar Belakang Proyek**
 
+Industri minyak sawit merupakan salah satu sektor yang memegang peran penting dalam ekonomi global, khususnya di negara-negara penghasil utama seperti Indonesia dan Malaysia. Proses pengolahan minyak sawit melibatkan berbagai tahapan, mulai dari ekstraksi hingga pemurnian, yang bertujuan untuk menghasilkan produk minyak sawit berkualitas tinggi. Salah satu aspek yang sangat penting dalam proses ini adalah pengelolaan kualitas inti sawit (kernel) yang menjadi bahan baku utama dalam produksi minyak inti sawit (palm kernel oil).
+
+Untuk memastikan kualitas inti sawit yang konsisten, pengukuran parameter-parameter kimia dan fisik menjadi sangat diperlukan. Data seperti Oil Wet Matter (OWM), Volatile Matter (VM), Oil Dry Matter (ODM), Non-Oil Solids (NOS), dan Free Fatty Acid (FFA) menjadi indikator penting yang dapat digunakan untuk menentukan kualitas dan potensi hasil ekstraksi minyak dari inti sawit. Pengukuran data ini kini dapat dilakukan dengan menggunakan teknologi analitik canggih seperti Foss NIRS (Near Infrared Spectroscopy), yang mampu memberikan data yang akurat, cepat, dan non-destruktif.
+
+Namun, data yang diperoleh dari Foss NIRS seringkali sangat kompleks dan dalam jumlah besar, sehingga memerlukan pendekatan analisis yang efektif untuk menginterpretasi pola-pola yang tersembunyi di dalamnya. Salah satu metode yang dapat digunakan adalah clustering, yaitu teknik analisis data yang bertujuan untuk mengelompokkan data ke dalam beberapa grup berdasarkan kesamaan karakteristiknya. Dalam konteks ini, clustering dapat membantu dalam mengidentifikasi kelompok inti sawit dengan karakteristik yang serupa, sehingga nantinya hasil clustering akan dapat membantu mengelompokan kualitas minyak dari inti sawit (kernel) tersebut.
+
 **Pentingnya Proyek**
+
+Proyek ini penting karena:
+
+- Mempercepat proses klasifikasi kualitas inti sawit: Dengan menggunakan teknik clustering, proses pengelompokan kualitas inti sawit dapat dilakukan secara otomatis dan lebih cepat, tanpa harus menunggu seluruh sampel selesai diuji secara manual.
+- Memberikan rekomendasi kualitas minyak sawit secara real-time: Proyek ini membantu mengidentifikasi minyak sawit dengan kualitas yang baik, serta memberikan wawasan tentang langkah-langkah yang dapat diambil untuk meningkatkan kualitas minyak yang berada di bawah standar.
+- Mengidentifikasi minyak sawit berkualitas buruk lebih awal: Dengan clustering, kelompok inti sawit dengan karakteristik yang menunjukkan kualitas buruk dapat dideteksi lebih cepat, sehingga tindakan perbaikan dapat segera dilakukan.
 
 ## Business Understanding
 
 ### Problem Statements
 
+- Bagaimana kita dapat melakukan clustering untuk mengelompokkan kualitas inti sawit (kernel) berdasarkan data yang disediakan oleh mesin Foss NIRS, sehingga membantu mengidentifikasi kualitas minyak lebih awal tanpa harus menunggu seluruh proses pengujian selesai
+- Bagaimana kita dapat menganalisis dan membandingkan kualitas minyak secara keseluruhan di pabrik secara lebih efektif, sehingga memberikan wawasan tentang kualitas minyak baik, minyak yang masih bisa ditingkatkan, dan minyak berkualitas buruk?
+
 ### Goals
+
+- Mengembangkan model clustering berbasis data dari mesin Foss NIRS untuk mengelompokkan kualitas inti sawit (kernel), sehingga membantu mempercepat proses pengelolaan dan pengambilan keputusan.
+- Membuat sistem analitik yang dapat memberikan wawasan kualitas minyak sawit secara keseluruhan di pabrik, dengan fokus pada kualitas baik, potensi peningkatan, dan deteksi kualitas buruk.
 
 ### Solution statements
 
+- Content-Based Clustering: Menggunakan data deskriptif dari mesin Foss NIRS, seperti Oil Wet Matter, Volatile Matter, Oil Dry Matter, Non-Oil Solids, dan Free Fatty Acid, untuk mengelompokkan inti sawit ke dalam kelompok dengan karakteristik kualitas yang serupa
+- Collaborative Analysis: Menggunakan data clustering untuk membandingkan kualitas minyak sawit di seluruh proses produksi, sehingga memberikan rekomendasi tentang langkah perbaikan atau optimalisasi berdasarkan pola dari data serupa.
+  
 ## Data Understanding
 
-Dataset yang digunakan berisi informasi mengenai berbagai kadar dalam perkebunan kelaa sawit. Dataset ini dapat diperoleh menggunakan alat [foss nirs](https://news.kharisma-sawit.com/berita-terkini-beginilah-cara-kerja-foss-nir-pabrik-sawit-efektif-untuk-pks-284#:~:text=Bisa%20dikatakan%20bahwa%20FOSS%20NIRS,cepat%20hanya%20dalam%20satu%20menit.).
+Dataset yang digunakan berisi informasi mengenai berbagai kadar dalam perkebunan kelapa sawit. Dataset ini dapat diperoleh menggunakan alat [foss nirs](https://news.kharisma-sawit.com/berita-terkini-beginilah-cara-kerja-foss-nir-pabrik-sawit-efektif-untuk-pks-284#:~:text=Bisa%20dikatakan%20bahwa%20FOSS%20NIRS,cepat%20hanya%20dalam%20satu%20menit.).
 
 | Column                   | Non-Null Count | Dtype   |
 | ------------------------ | -------------- | ------- |
@@ -185,6 +206,7 @@ Di mana:
 - RMSE yang besar mengindikasikan bahwa model memiliki performa yang buruk karena kesalahan antara prediksi dan nilai aktual tinggi.
 
 **Hasil Proyek**
+
 | | Train | Test |
 |------------|------- |-------|
 | RMSE | 0.2063 | 0.6416|
@@ -203,6 +225,6 @@ RMSE yang dihitung memberikan indikasi bahwa model prediksi rating memiliki ting
 
 ## Kesimpulan
 
-Dengan menggunakan kedua pendekatan ini, kita dapat membangun sistem rekomendasi yang lebih robust dan fleksibel. Content-Based Filtering cocok untuk memberikan rekomendasi berdasarkan fitur-fitur item itu sendiri, sementara Collaborative Filtering efektif dalam menemukan pola-pola preferensi pengguna dari data interaksi yang ada. Memahami kelebihan dan kekurangan masing-masing pendekatan membantu kita memilih metode yang paling sesuai dengan kebutuhan dan konteks spesifik dari sistem rekomendasi yang sedang dibangun.
+Dengan menerapkan metode clustering pada data inti sawit (kernel) yang diperoleh dari mesin Foss NIRS, kita dapat secara efektif mengidentifikasi kualitas minyak sawit lebih awal, mengelompokkan hasilnya ke dalam kategori kualitas sangat baik, masih dapat ditingkatkan, atau kualitas buruk. Pendekatan ini memungkinkan tindakan perbaikan atau optimalisasi dilakukan segera, tanpa perlu menunggu seluruh proses pengujian selesai, sehingga meningkatkan efisiensi operasional, memastikan kualitas produk, dan meminimalkan potensi kerugian di seluruh rantai produksi.
 
 ## Referensi
