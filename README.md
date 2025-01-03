@@ -28,15 +28,32 @@ Dataset yang digunakan berisi informasi mengenai berbagai kadar dalam perkebunan
 | OIL_DM                   | 3205 non-null  | float64 |
 | NOS                      | 3205 non-null  | float64 |
 | FFA                      | 3205 non-null  | float64 |
-| DOBI                     | 3205 non-null  | int64   |
 | RILL_MUTU_KADAR_AIR      | 3205 non-null  | float64 |
 | INC_MUTU_KADAR_AIR       | 3205 non-null  | object  |
+
+Variabel-variabel pada dataset adalah sebagai berikut:
+
+- `COMPANY`: ID Perusahan penghasil kelapa sawit
+- `PKS_CODE`: Kode Perkebunan kelapa sawit.
+- `INSTRUMENT_SERIAL_NUMBER`: serial number intrumen dari kelapa sawit.
+- `OIL_WM`: Kandungan minyak dalam kondisi basah (Oil WetMatter).
+- `VM`: Kandungan zat volatil (Volatile Matter).
+- `OIL_DM`: Kandungan minyak dalam kondisi kering(OilDryMatter).
+- `NOS`: Kandungan padatan bukan minyak(NonOilSolids).
+- `FFA`: Asam lemak bebas(Free Fatty Acid).
+- `RILL_MUTU_KADAR_AIR`: Kadar mutu air murni.
+- `INC_MUTU_KADAR_AIR`: Kadar mutu air tidak murni.
 
 **Principal Component Analysis(PCA)**
 
 ## Data Preparation
 
 **Teknik Data Preparation**
+
+- Menggunakan beberapa kolom terlebih dahulu unutk melakukan pengclusteran
+- Handling missing value dengan mengahpus
+- Menghapus data yang memliki nilai _Outliers_
+- Normalisai data
 
 **Proses Data Preparation**
 
