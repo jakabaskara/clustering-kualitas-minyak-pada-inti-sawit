@@ -86,9 +86,39 @@ Variabel-variabel pada dataset adalah sebagai berikut:
 
 **Principal Component Analysis(PCA)**
 
+- Pengolahan data menggunakan teknik PCA untuk mempertahankan data yang paling relevan
+
 ## Modeling
 
-**K-Menas Clustering**
+**K-Means Clustering**
+Pada tahap ini akan membahas pendekatan K-Means Clustering. Berikut adalah penjelasan lebih lanjut mengenai parameter yang digunakan, kelebihan, dan kekurangan dari pendekatan tersebut.
+
+Tahapan Proses K-Means Clustering :
+
+1. Menggunakan Elbow Method untuk mencari nilai K
+
+```python
+inertia = []
+K = range(1, 10)
+for k in K:
+    kmeans = KMeans(n_clusters=k, random_state=42)
+    kmeans.fit(data_pca)
+    inertia.append(kmeans.inertia_)
+
+# Visualisasi
+plt.figure(figsize=(8, 5))
+plt.plot(K, inertia, 'bo-', markersize=8)
+plt.xlabel('Jumlah Cluster (k)')
+plt.ylabel('Inertia')
+plt.title('Elbow Method untuk Menentukan Jumlah Cluster Optimal')
+plt.grid(True)
+plt.show()
+```
+
+Hasil Elbow method sperti berikut
+![Elbow Method](https://github.com/jakabaskara/clustering-kualitas-minyak-pada-inti-sawit/image/ElbowMethod.png)
+
+dari gambar tersebut bisa diambil nilai K yang bagus adalah 3
 
 **Kelebihan dan Kekurangan Pendekatan**
 
