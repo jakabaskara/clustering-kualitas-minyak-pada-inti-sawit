@@ -91,6 +91,7 @@ Variabel-variabel pada dataset adalah sebagai berikut:
 ## Modeling
 
 **K-Means Clustering**
+
 Pada tahap ini akan membahas pendekatan K-Means Clustering. Berikut adalah penjelasan lebih lanjut mengenai parameter yang digunakan, kelebihan, dan kekurangan dari pendekatan tersebut.
 
 Tahapan Proses K-Means Clustering :
@@ -116,7 +117,7 @@ plt.show()
 ```
 
 Hasil Elbow method sperti berikut
-![Elbow Method](https://github.com/jakabaskara/clustering-kualitas-minyak-pada-inti-sawit/image/ElbowMethod.png)
+![Elbow Method](https://github.com/jakabaskara/clustering-kualitas-minyak-pada-inti-sawit/blob/main/image/ElbowMethod.png)
 
 dari gambar tersebut bisa diambil nilai K yang bagus adalah 3
 
