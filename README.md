@@ -37,7 +37,7 @@ Proyek ini penting karena:
 
 ## Data Understanding
 
-Dataset yang digunakan berisi informasi mengenai berbagai kadar dalam perkebunan kelapa sawit. Dataset ini dapat diperoleh menggunakan alat FOSS NIRS [1].
+Dataset yang digunakan berisi informasi mengenai berbagai kadar dalam perkebunan kelapa sawit. Dataset ini dapat diperoleh menggunakan alat [FOSS NIRS](https://news.kharisma-sawit.com/berita-terkini-beginilah-cara-kerja-foss-nir-pabrik-sawit-efektif-untuk-pks-284#:~:text=Bisa%20dikatakan%20bahwa%20FOSS%20NIRS) [1].
 
 | Column                   | Non-Null Count | Dtype   |
 | ------------------------ | -------------- | ------- |
