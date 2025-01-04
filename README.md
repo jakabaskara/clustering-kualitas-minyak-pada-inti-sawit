@@ -121,6 +121,60 @@ Hasil Elbow method sperti berikut
 
 dari gambar tersebut bisa diambil nilai K yang bagus adalah 3
 
+2. Menggunakan nilai K yang telah ditentukan untuk melakukan K-Means Clustering
+
+Pada tahap menuggnakan K-Means Clustering dengan nilai K yang diambil dari perbantuan Elbow Method diatas dilakukan dua kali percobaan yaitu menggunakan nilai K = 2 dan K =3
+
+Untuk Penggunakan nilai K = 2 pada K-Menas Clustering
+
+```python
+optimal_k = 2
+kmeans = KMeans(n_clusters=optimal_k, random_state=42)
+data_inliers['Cluster'] = kmeans.fit_predict(data_pca)
+
+#Visualisasi Cluster
+plt.figure(figsize=(10, 6))
+for cluster in range(optimal_k):
+    plt.scatter(data_pca[data_inliers['Cluster'] == cluster, 0],
+                data_pca[data_inliers['Cluster'] == cluster, 1],
+                label=f'Cluster {cluster}', alpha=0.7, s=100)
+plt.xlabel('Principal Component 1')
+plt.ylabel('Principal Component 2')
+plt.title('Visualisasi Clustering setelah Penanganan Outliers, PCA, dan Normalisasi')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+```
+
+Hasilnya seperti berikut :
+![KMeansClusterKeq2](https://github.com/jakabaskara/clustering-kualitas-minyak-pada-inti-sawit/blob/main/image/KMeansClusterKeq2.png)
+
+Untuk Penggunakan nilai K = 3 pada K-Menas Clustering
+
+```python
+optimal_k = 3
+kmeans = KMeans(n_clusters=optimal_k, random_state=42)
+data_inliers['Cluster'] = kmeans.fit_predict(data_pca)
+
+#Visualisasi Cluster
+plt.figure(figsize=(10, 6))
+for cluster in range(optimal_k):
+    plt.scatter(data_pca[data_inliers['Cluster'] == cluster, 0],
+                data_pca[data_inliers['Cluster'] == cluster, 1],
+                label=f'Cluster {cluster}', alpha=0.7, s=100)
+plt.xlabel('Principal Component 1')
+plt.ylabel('Principal Component 2')
+plt.title('Visualisasi Clustering setelah Penanganan Outliers, PCA, dan Normalisasi')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+```
+
+Hasilnya seperti berikut :
+![KMeansClusterKeq3](https://github.com/jakabaskara/clustering-kualitas-minyak-pada-inti-sawit/blob/main/image/KMeansClusterKeq3.png)
+
 **Kelebihan dan Kekurangan Pendekatan**
 
 ## Evaluation
