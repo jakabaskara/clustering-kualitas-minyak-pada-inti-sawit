@@ -37,7 +37,7 @@ Proyek ini penting karena:
 
 ## Data Understanding
 
-Dataset yang digunakan berisi informasi mengenai berbagai kadar dalam perkebunan kelapa sawit. Dataset ini dapat diperoleh menggunakan alat [foss nirs](https://news.kharisma-sawit.com/berita-terkini-beginilah-cara-kerja-foss-nir-pabrik-sawit-efektif-untuk-pks-284#:~:text=Bisa%20dikatakan%20bahwa%20FOSS%20NIRS,cepat%20hanya%20dalam%20satu%20menit.).
+Dataset yang digunakan berisi informasi mengenai berbagai kadar dalam perkebunan kelapa sawit. Dataset ini dapat diperoleh menggunakan alat [FOSS NIRS][1](https://news.kharisma-sawit.com/berita-terkini-beginilah-cara-kerja-foss-nir-pabrik-sawit-efektif-untuk-pks-284#:~:text=Bisa%20dikatakan%20bahwa%20FOSS%20NIRS,cepat%20hanya%20dalam%20satu%20menit.).
 
 | Column                   | Non-Null Count | Dtype   |
 | ------------------------ | -------------- | ------- |
@@ -119,7 +119,9 @@ plt.show()
 Hasil Elbow method sperti berikut
 ![Elbow Method](https://github.com/jakabaskara/clustering-kualitas-minyak-pada-inti-sawit/blob/main/image/ElbowMethod.png)
 
-dari gambar tersebut bisa diambil nilai K yang bagus adalah 3
+dari gambar tersebut bisa diambil nilai K yang bagus adalah 2
+
+Namun dalam case ini mencoba menggunakan 3 cluster karena mendekati standarisasi pembagian yang ada di lapangan yaitu kandungan buruk, kandungan baik, dan kandungan yang bisa ditingkatkan.
 
 2. Menggunakan nilai K yang telah ditentukan untuk melakukan K-Means Clustering
 
@@ -186,3 +188,5 @@ Hasilnya seperti berikut :
 ## Kesimpulan
 
 ## Referensi
+
+[1] [FOSS NIRS SAWIT](https://news.kharisma-sawit.com/berita-terkini-beginilah-cara-kerja-foss-nir-pabrik-sawit-efektif-untuk-pks-284#:~:text=Bisa%20dikatakan%20bahwa%20FOSS%20NIRS)
